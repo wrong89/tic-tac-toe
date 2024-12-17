@@ -1,24 +1,22 @@
-import { CellContent } from '@/types/types';
-import { useEffect, useState } from 'react';
+import { ICell } from '@/types/types';
+import { FC } from 'react';
 import Cell from '../Cell/Cell';
+import cls from './Cells.module.css';
 
 interface CellsProps {
-    items: CellContent[];
+    items: ICell[][];
 }
 
-const Cells = () => {
-    const [items, setItems] = useState(Array(9));
-
-    console.log('items before update', items);
-
-    useEffect(() => {
-        setItems((prev) => prev.fill('-', 0, prev.length));
-        console.log('items after update', items);
-    }, [items]);
-
+const Cells: FC<CellsProps> = ({ items: rows }) => {
     return (
-        <div>
-            <Cell />
+        <div className={cls.cells}>
+            {rows.map((cols, index) => (
+                <div className={cls.column} key={index}>
+                    {cols.map((item, index) => (
+                        <Cell key={index} {...item} />
+                    ))}
+                </div>
+            ))}
         </div>
     );
 };

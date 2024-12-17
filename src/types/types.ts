@@ -1,1 +1,5 @@
-export type CellContent = false | 'o' | 'x';
+export type CellContent = '-' | 'o' | 'x';
+
+export interface ICell {
+    text: CellContent;
+}
