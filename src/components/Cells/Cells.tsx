@@ -1,9 +1,10 @@
+import { CellContent } from '@/types/types';
 import { useEffect, useState } from 'react';
 import Cell from '../Cell/Cell';
 
-// interface CellsProps {
-//    items:
-// }
+interface CellsProps {
+    items: CellContent[];
+}
 
 const Cells = () => {
     const [items, setItems] = useState(Array(9));
